@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">StickyNavProject</string>
+    <string name="over_jump">跳过%1$s  秒</string>
 </resources>
