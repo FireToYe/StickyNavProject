@@ -10,6 +10,7 @@ import android.widget.Button;
 
 public class SplashActivity extends AppCompatActivity {
     private Button btnOver;
+    private Button btnPhotoChoose;
     private boolean isOver= false;
     private Handler mHandler = new Handler(){
         @Override
@@ -34,6 +35,7 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         btnOver = (Button) findViewById(R.id.btn_over);
+        btnPhotoChoose = (Button) findViewById(R.id.btn_photo_choose);
         final Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -62,6 +64,18 @@ public class SplashActivity extends AppCompatActivity {
                 isOver= true;
                 mHandler.removeMessages(0x123);
                 mHandler.removeMessages(0x456);
+            }
+        });
+        btnPhotoChoose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SplashActivity.this,PhotoChooseActivity.class);
+                startActivity(intent);
+                finish();
+                isOver= true;
+                mHandler.removeMessages(0x123);
+                mHandler.removeMessages(0x456);
+
             }
         });
         thread.start();
